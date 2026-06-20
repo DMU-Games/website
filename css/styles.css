@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Monofett&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+@layer theme, layout, utilities;
+
+
+/* Core layouts and basic box model */
+@layer framework {
+
+    @layer layout {
+    
+        body {
+            margin: 0;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            min-height: 100svh;
+
+            header, footer, main section {
+                padding-inline: 0.5rem;
+                @media (width > 600px) {
+                    padding-inline: 1.5rem;
+                }
+            }
+
+            header, footer {
+                padding-block: 0.5rem;
+            }
+
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                gap: 0 2em;
+                flex-wrap: wrap;
+                h1 {
+                    margin: 0;
+                }
+                nav {
+                    display: flex;
+                    gap: 1rem;
+                    a {
+                        color: inherit;
+                        text-decoration: none;
+                        font-size: 2em;
+                        font-weight: 200;
+                    }
+
+                }
+            }
+
+            main {
+                section {
+                    padding-block: 5em; 
+
+                    dl {
+                        font-size: 1.6em;
+                        display: grid;
+                        grid-template-columns: auto 1fr;
+                        gap: 1rem;
+                        dt {
+                            &::after {content: ":"}
+                        }
+                        dd {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+
+            footer {
+                text-align: right;
+            }
+        }
+    }
+    
+    @layer typography {
+        body {
+            font-family: "noto sans";
+            header {
+                h1 {
+                    font-family: "Monofett";
+                    line-height: 1;
+                    text-wrap-mode: nowrap;
+                    font-size: max(3em, 8vw);
+                    font-weight: 300;
+                    letter-spacing: 1vw;
+                }
+            }
+            main {
+                h2, h3, h4, h5, h6 {
+                    font-weight: 200;
+                    letter-spacing: 2px;
+                }
+                h2 { font-size: max(1.8em, 3vw); }
+                p {
+                    font-family: "noto serif";
+                    font-size: 1.2em;
+                    max-width: 70ch;
+                    line-height: 1.7;
+                }
+            }
+        }
+    }
+} 
+
+
+/* This is for stuff which is more likely to change */
+@layer theme {
+    :root {
+        color-scheme: light dark;
+        --bg-dark1: hsl(0, 80%, 35%);
+        --bg-dark2: linear-gradient(black, #222);
+        --bg-light1: white;
+    }
+
+    body {
+        animation-timeline: scroll(x self);
+        background: light-dark(var(--bg-light1), var(--bg-dark1));
+
+        header, footer {
+            background: light-dark(var(--bg-dark1), black);
+            color: light-dark(var(--bg-light1), white);
+        }
+
+        header {
+            border-bottom: 2vh solid light-dark(black, white);
+        }
+
+        main {
+            section {
+                &:nth-child(even) {
+                    background: var(--bg-dark2);
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+/* These can be applied to change the default behaviour */
+
+@layer utilities {
+    .webgame {
+        iframe {
+            width: 100%;
+        }
+    }
+
+    .with-something {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+
+        p {
+            translate: -2rem;
+            opacity: .2;
+            animation: enter alternate forwards;
+            animation-timeline: view(block 70% 0%);
+        }
+        
+        img {
+            box-sizing: border-box;
+            width: 400px;
+            aspect-ratio: 1;
+            border-radius: 100%;
+            border: 2px solid black;
+            object-fit: cover;
+            rotate: 0.1turn;
+            translate: -2rem 2rem;
+            animation: enter alternate forwards;
+            animation-timeline: view(block 70% 10%);
+        }
+        &:first-child {
+            p {translate: none;}
+        }
+        &:last-child {
+            img {
+                animation-timeline: view(block 100% 10%);
+            }
+        }
+    }
+
+    @keyframes enter {
+        100% {
+            rotate: none;
+            translate: none;
+            opacity: 1;
+        }
+    }
+}
+
