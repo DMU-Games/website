@@ -103,6 +103,7 @@
 
 
 /* This is for stuff which is more likely to change */
+
 @layer theme {
     :root {
         color-scheme: light dark;
@@ -115,6 +116,14 @@
         animation-timeline: scroll(x self);
         background: light-dark(var(--bg-light1), var(--bg-dark1));
 
+        a {
+            color: color-mix(in oklab, var(--color) 40%, var(--bg-dark1) 60%);
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
         header, footer {
             background: light-dark(var(--bg-dark1), black);
             color: light-dark(var(--bg-light1), white);
@@ -126,9 +135,14 @@
 
         main {
             section {
+                --color: light-dark(black, white);
+                color: var(--color);
+                img {
+                    border-color: var(--color);
+                }
                 &:nth-child(even) {
                     background: var(--bg-dark2);
-                    color: white;
+                    --color: light-dark(white, black);
                 }
             }
         }
@@ -141,9 +155,14 @@
 /* These can be applied to change the default behaviour */
 
 @layer utilities {
-    .webgame {
-        iframe {
-            width: 100%;
+    .game-info {
+        h2 a { color: inherit}
+        img.game {
+            transition: scale 300ms ease-out, box-shadow 200ms;
+            &:hover {
+                scale:1.1;
+                box-shadow: 0 0 30px var(--color);
+            }
         }
     }
 
@@ -153,11 +172,15 @@
         align-items: center;
         flex-wrap: wrap;
 
+        :first-child {
+            flex-grow: 0.5;
+        }
+
         p {
             translate: -2rem;
             opacity: .2;
             animation: enter alternate forwards;
-            animation-timeline: view(block 70% 0%);
+            animation-timeline: view(block 50% 0%);
         }
         
         img {
@@ -165,7 +188,7 @@
             width: 400px;
             aspect-ratio: 1;
             border-radius: 100%;
-            border: 2px solid black;
+            border: 2px solid var(--color);
             object-fit: cover;
             rotate: 0.1turn;
             translate: -2rem 2rem;
