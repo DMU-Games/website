@@ -1,0 +1,69 @@
+/* These can be applied to change the default behaviour */
+
+.game-info {
+    h2 a {
+        color: inherit
+    }
+
+    img.game {
+        transition: scale 300ms ease-out, box-shadow 200ms;
+
+        &:hover {
+            scale: 1.1;
+            box-shadow: 0 0 30px var(--color);
+        }
+    }
+}
+
+.with-something {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+    :first-child {
+        flex-grow: 0.5;
+    }
+
+    p {
+        translate: -2rem;
+        opacity: .2;
+        animation: enter alternate forwards;
+        animation-timeline: view(block 50% 0%);
+    }
+
+    img {
+        box-sizing: border-box;
+        width: 400px;
+        max-width: 85%;
+        aspect-ratio: 1;
+        border-radius: 100%;
+        border: 2px solid var(--color);
+        object-fit: cover;
+        rotate: 0.1turn;
+        translate: -2rem 2rem;
+        animation: enter alternate forwards;
+        animation-timeline: view(block 70% 10%);
+    }
+
+    &:first-child {
+        p {
+            translate: none;
+        }
+    }
+
+    &:last-child {
+        img {
+            animation-timeline: view(block 100% 10%);
+        }
+    }
+}
+
+@keyframes enter {
+    100% {
+        rotate: none;
+        translate: none;
+        opacity: 1;
+    }
+}
