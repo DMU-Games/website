@@ -1,0 +1,103 @@
+:root {
+    color-scheme: light dark;
+
+    @media(prefers-color-scheme: dark) {
+        --normal-bg1: hsl(0 7% 0%);
+        --normal-bg2: hsl(0 70% 10%);
+        --header-bg1: hsl(0 50% 50%);
+        --header-bg2: hsl(0 70% 20%);
+        --accent-bg1: hsl(0 60% 15%);
+        --accent-bg2: hsl(0 70% 60%);
+    }
+
+    @media(prefers-color-scheme: light) {
+        --normal-bg1: white;
+        --normal-bg2: hsl(0 30% 90%);
+        --header-bg1: hsl(0 50% 50%);
+        --header-bg2: hsl(0 70% 20%);
+        --accent-bg1: hsl(0 50% 0%);
+        --accent-bg2: hsl(0 70% 10%);
+    }
+
+    --normal-grad: linear-gradient(45deg, var(--normal-bg1), 90%, var(--normal-bg2));
+    --header-grad: linear-gradient(45deg, var(--header-bg1), 90%, var(--header-bg2));
+    --accent-grad: linear-gradient(var(--accent-bg1), var(--accent-bg2));
+
+    /* calculated colours for text */
+    --normal-color: color-mix(in oklab, var(--normal-bg1) 20%, contrast-color(var(--normal-bg1)) 80%);
+    --header-color: color-mix(in oklab, var(--header-bg1) 20%, contrast-color(var(--header-bg1)) 80%);
+    --accent-color: color-mix(in oklab, var(--accent-bg1) 20%, contrast-color(var(--accent-bg1)) 80%);
+    --normal-link-color: color-mix(in oklab, var(--normal-bg1) 50%, contrast-color(var(--normal-bg1)) 50%);
+    --header-link-color: color-mix(in oklab, var(--header-bg1) 50%, contrast-color(var(--header-bg1)) 50%);
+    --accent-link-color: color-mix(in oklab, var(--accent-bg1) 50%, contrast-color(var(--accent-bg1)) 50%);
+}
+
+body {
+    background: var(--normal-grad);
+    color: var(--normal-color);
+
+    a {
+        color: var(--normal-link-color);
+    }
+}
+
+header, footer {
+    background: var(--header-grad);
+    color: var(--header-color);
+
+    a {
+        color: var(--header-link-color);
+    }
+}
+
+header {
+    background:
+        /* url("https://www.placecats.com/1000/200"), */
+        /* url("https://picsum.photos/id/250/400/400"), */
+        url("https://picsum.photos/id/491/400/400"),
+        var(--header-grad);
+
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    border-bottom-color: var(--accent-bg1);
+
+    label {
+        div {
+            background-color: var(--header-color);      
+        }
+    }
+
+    nav {
+        a {
+            border: 1px solid var(--header-color);
+            color: inherit;
+            /* mobile menu */
+            @media (width < 500px) {
+                background: var(--header-grad);
+            }
+        }
+    }
+}
+
+main {
+    img {
+        border-color: var(--normal-color);
+    }
+
+    section {
+        --color: var(--normal-color);
+        --opposite-color: var(--accent-color);
+        color: var(--color);
+
+        &:nth-of-type(even) {
+            --color: var(--accent-color);
+            --opposite-color: var(--normal-color);
+            background: var(--accent-grad);
+
+            a {
+                color: var(--accent-link-color);
+            }
+        }
+    }
+}

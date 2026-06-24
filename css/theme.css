@@ -1,124 +1,22 @@
-/* This is for stuff which is more likely to change */
-
-@layer colours {
-    :root {
-        color-scheme: light dark;
-
-        /* colours and gradients */
-        --light-01: white;
-        --light-02: hsl(180, 80%, 70%);
-        --grad-light: linear-gradient(var(--light-01), var(--light-02));
-
-        --dark-01: black;
-        --dark-02: #222;
-        --grad-dark: linear-gradient(var(--dark-01), var(--dark-02));
-
-        --accent-01: hsl(0, 80%, 35%);
-        --accent-02: hsl(0, 80%, 25%);
-        --grad-accent: linear-gradient(var(--accent-01), var(--accent-02));
-
-        /* actual selected colours based on light/dark theme */
-        /* light theme is white with a red header/footer and black accents */
-        /* dark theme is black with a red header/footer and white accents */
-
-        /* default */
-        --bg-colour: light-dark(var(--light-01), var(--dark-01));
-        --bg-grad: light-dark(var(--grad-light), var(--grad-dark));
-
-        /* header */
-        --bg-header: var(--grad-accent);
-
-        /* alternate sections */
-        --bg-accent: light-dark(var(--grad-dark), var(--grad-light)); 
-
-        /* calculated colours for text */
-        --color: color-mix(in oklab, var(--bg-colour) 20%, contrast-color(var(--bg-colour)) 80%);
-        --header-color: color-mix(in oklab, var(--accent-01) 5%, contrast-color(var(--accent-01)) 95%);
-        --link-color: color-mix(in oklab, var(--color) 40%, var(--bg-colour) 60%);
-    }
-
-    body, footer {
-        background: var(--bg-grad);
-        color: var(--color);
-    }
-
-    header, footer {
-        --bg-grad: var(--bg-header);
-        --color: var(--header-color);
-    }
-
-    header {
-        border-bottom-color: var(--dark-01);
-        color: var(--color);
-        background: 
-            var(--bg-grad),
-            url("https://www.placecats.com/1000/200");
-
-        background-size: cover;
-        background-position: center;
-        background-blend-mode: overlay;
-    }
-    
-    main {
-        a {
-            color: var(--link-color);
-        }
-        img {
-            border-color: var(--color);
-        }
-        section {
-            --bg-grad: var(--bg-accent);
-            &:nth-of-type(even) {
-                background: var(--bg-accent);
-                /* background:
-                    var(--bg-grad),
-                    url("https://www.placecats.com/1000/200"); */
-                a {
-                    color: color-mix(in oklab, var(--color) 40%, var(--bg-dark1) 60%);
-                }
-            }
-        }
-    }
-}
 
 
-@layer boxprops {
+@layer fancy-bits {
 
     body {  
 
         /* Instantiate a new variable here: */
+        /* Multiple elements can share the timeline */
         timeline-scope: --header-shrink-timeline;
 
         header {
-            border-bottom-style: solid;
-            border-bottom-width: 2vh;
             box-sizing: border-box;
             min-height: 50svh;
-            /* --super-ease-out: cubic-bezier(0.15, 0.75, 0.35, 1); */
-            /* animation: shrink forwards var(--super-ease-out); */
             animation: shrink forwards linear;
-            animation-timeline: --header-shrink-timeline;
+            animation-timeline: --header-shrink-timeline; 
             animation-range: entry 40% 100%;
             top: 0;
             z-index: 1;
             position: sticky;
-
-            /* padding-block: 3em; */
-    
-            nav {
-                font-size: 1.2em;
-                font-weight: 200;
-                a {
-                    padding-inline: 0.25em;
-                    border-radius: 2px;
-                    backdrop-filter: blur(5px) brightness(0.5);
-                
-                    &:hover {
-                        backdrop-filter: blur(5px) brightness(2);
-                    }
-                }
-    
-            }
         }
 
         main {
@@ -134,7 +32,7 @@
     }
     @keyframes shrinkFont {
         100% {
-            font-size: 2.5rem;
+            font-size: 3rem;
         }
     }
 }
@@ -150,18 +48,16 @@
                 line-height: 1;
                 text-wrap-mode: nowrap;
                 font-size: max(3em, 8vw);
-                font-weight: 300;
-                letter-spacing: 1vw;
+                font-weight: 100;
+                letter-spacing: 5%;
                 animation: shrinkFont forwards linear;
                 animation-timeline: --header-shrink-timeline;
                 animation-range: entry 40% 100%;
             }
 
-            nav a {
-                font-size: max(1.6em, 2vw);
-                animation: shrinkFont forwards linear;
-                animation-timeline: --header-shrink-timeline;
-                animation-range: entry 40% 100%;
+            nav {
+                font-size: max(1.2em, 1.6vw);
+                font-weight: 400;
             }
         }
 
