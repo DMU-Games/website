@@ -67,6 +67,27 @@ main:has(.with-something) {
     }
 }
 
+.hero:has(.title + .subtitle) {
+    h2 {
+        line-height: 1.1;
+    }
+    .title {
+        font-size: 0.7em;
+        color: var(--accent-bg2);
+        font-variant: small-caps;
+    }
+    .subtitle {
+        font-weight: 500;
+        font-size: 2em;
+        letter-spacing: -3px;
+    }
+    p {
+        font-weight: 200;
+        font-size: 1.4em;
+
+    }
+}
+
 @keyframes enter {
     100% {
         transform: scale(1);
