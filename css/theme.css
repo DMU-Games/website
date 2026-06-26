@@ -44,11 +44,15 @@
 
         header {
             h1 {
-                font-family: "Monofett";
-                line-height: 1;
+                padding-left: 1.6em;
+                background: url(../img/Logo1white.svg) no-repeat;
+                background-size: 1.5em;
+                background-position: bottom left;
+                font-family: "Tourney", "Monofett";
+                line-height: .8;
                 text-wrap-mode: nowrap;
                 font-size: max(3em, 8vw);
-                font-weight: 100;
+                font-weight: 400;
                 letter-spacing: 5%;
                 animation: shrinkFont forwards linear;
                 animation-timeline: --header-shrink-timeline;

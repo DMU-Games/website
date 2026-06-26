@@ -4,28 +4,28 @@
     @media(prefers-color-scheme: dark) {
         --normal-bg1: hsl(0 7% 0%);
         --normal-bg2: hsl(0 70% 10%);
-        --header-bg1: hsl(0 50% 50%);
-        --header-bg2: hsl(0 70% 20%);
-        --accent-bg1: hsl(0 60% 15%);
-        --accent-bg2: hsl(0 70% 60%);
+        --header-bg1: hsl(350 71% 39%);
+        --header-bg2: color-mix(in oklab, var(--header-bg1) 70%, black 30%);
+        --accent-bg1: hsl(350 71% 30%);
+        --accent-bg2: hsl(350 71% 20%);
     }
 
     @media(prefers-color-scheme: light) {
         --normal-bg1: white;
         --normal-bg2: hsl(0 30% 90%);
-        --header-bg1: hsl(0 50% 50%);
-        --header-bg2: hsl(0 70% 20%);
-        --accent-bg1: hsl(0 50% 0%);
-        --accent-bg2: hsl(0 70% 10%);
+        --header-bg1: hsl(350 71% 39%);
+        --header-bg2: color-mix(in oklab, var(--header-bg1) 70%, white 30%);
+        --accent-bg1: hsl(350 71% 30%);
+        --accent-bg2: hsl(350 71% 20%);
     }
-
+    
     --normal-grad: linear-gradient(45deg, var(--normal-bg1), 90%, var(--normal-bg2));
-    --header-grad: linear-gradient(45deg, var(--header-bg1), 90%, var(--header-bg2));
+    --header-grad: linear-gradient(45deg, var(--header-bg1), 70%, var(--header-bg2));
     --accent-grad: linear-gradient(var(--accent-bg1), var(--accent-bg2));
 
     /* calculated colours for text */
-    --normal-color: color-mix(in oklab, var(--normal-bg1) 20%, contrast-color(var(--normal-bg1)) 80%);
-    --header-color: color-mix(in oklab, var(--header-bg1) 20%, contrast-color(var(--header-bg1)) 80%);
+    --normal-color: color-mix(in oklab, var(--normal-bg1) 10%, contrast-color(var(--normal-bg1)) 90%);
+    --header-color: contrast-color(var(--header-bg1));
     --accent-color: color-mix(in oklab, var(--accent-bg1) 20%, contrast-color(var(--accent-bg1)) 80%);
     --normal-link-color: color-mix(in oklab, var(--normal-bg1) 50%, contrast-color(var(--normal-bg1)) 50%);
     --header-link-color: color-mix(in oklab, var(--header-bg1) 50%, contrast-color(var(--header-bg1)) 50%);

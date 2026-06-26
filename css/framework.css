@@ -29,7 +29,7 @@
             justify-content: space-between;
             border-bottom-style: solid;
             border-bottom-width: 0.5dvh;
-            @media(width < 800px) {
+            @media(width < 1050px) {
                 flex-direction: column;
                 align-items: start;
                 justify-content: end;
