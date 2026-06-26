@@ -91,12 +91,12 @@
                 a {
                     color: inherit;
                     text-decoration: none;
-                    transition: 200ms;
                     padding: 0 0.5em;
                     border-radius: 2em;
                     line-height: 2;
-                    backdrop-filter: blur(10em);
-                
+
+                    transition: backdrop-filter 200ms;
+                    backdrop-filter: blur(10em);                
                     &:hover {
                         backdrop-filter: blur(10em) brightness(0.8);
                     }
@@ -118,16 +118,20 @@
                 }
 
                 nav {
-                    transition: 200ms;
+                    transition: translate 300ms;
                     position: fixed;
                     inset: 0;
                     flex-direction: column;
                     align-items: center;
-                    justify-content: space-around;
-                    /* background: black; */
-                    backdrop-filter: blur(1em) brightness(0.7);
+                    justify-content: space-between;
+                    place-content: center;
+                    backdrop-filter: blur(1em) brightness(0.5);
                     a {
-                        font-size: 2em;
+                        box-sizing: border-box;
+                        padding-block: .5em;
+                        min-width: 40svw;
+                        text-align: center;
+                        font-size: 2.5em;
                     }
                 }
             }
