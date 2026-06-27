@@ -1,10 +1,12 @@
 :root {
     color-scheme: light dark;
 
+    --dmu-red: hsl(350 71% 39%);
+
     @media(prefers-color-scheme: dark) {
         --normal-bg1: hsl(0 7% 0%);
         --normal-bg2: hsl(0 70% 10%);
-        --header-bg1: hsl(350 71% 39%);
+        --header-bg1: var(--dmu-red);
         --header-bg2: color-mix(in oklab, var(--header-bg1) 70%, black 30%);
         --accent-bg1: hsl(350 71% 30%);
         --accent-bg2: hsl(350 71% 20%);
@@ -13,7 +15,7 @@
     @media(prefers-color-scheme: light) {
         --normal-bg1: white;
         --normal-bg2: hsl(0 30% 90%);
-        --header-bg1: hsl(350 71% 39%);
+        --header-bg1: var(--dmu-red);
         --header-bg2: color-mix(in oklab, var(--header-bg1) 70%, white 30%);
         --accent-bg1: hsl(350 71% 30%);
         --accent-bg2: hsl(350 71% 20%);
@@ -27,9 +29,9 @@
     --normal-color: color-mix(in oklab, var(--normal-bg1) 10%, contrast-color(var(--normal-bg1)) 90%);
     --header-color: contrast-color(var(--header-bg1));
     --accent-color: color-mix(in oklab, var(--accent-bg1) 20%, contrast-color(var(--accent-bg1)) 80%);
-    --normal-link-color: color-mix(in oklab, var(--normal-bg1) 50%, contrast-color(var(--normal-bg1)) 50%);
+    --normal-link-color: color-mix(in oklab, var(--header-bg1) 50%, contrast-color(var(--normal-bg1)) 50%);
     --header-link-color: color-mix(in oklab, var(--header-bg1) 50%, contrast-color(var(--header-bg1)) 50%);
-    --accent-link-color: color-mix(in oklab, var(--accent-bg1) 50%, contrast-color(var(--accent-bg1)) 50%);
+    --accent-link-color: color-mix(in oklab, var(--accent-bg1) 80%, contrast-color(var(--accent-bg1)) 20%);
 }
 
 body {
@@ -52,15 +54,15 @@ header, footer {
 
 header {
     background:
-        /* url("https://www.placecats.com/1000/200"), */
-        /* url("https://picsum.photos/id/250/400/400"), */
-        url("https://picsum.photos/id/491/400/400"),
+        /* url("https://www.placecats.com/1600/400"), */
+        /* url("https://picsum.photos/id/250/1600/1200"), */
+        url("https://picsum.photos/id/491/1600/1600"),
         var(--header-grad);
 
     background-size: cover;
     background-position: center;
     background-blend-mode: overlay;
-    border-bottom-color: var(--accent-bg1);
+    border-bottom-color: var(--normal-color);
 
     label {
         div {
