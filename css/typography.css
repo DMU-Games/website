@@ -7,6 +7,9 @@ body {
     @media (width > 450px) {
         font-size: 150%;
     }
+    @media (width > 1800px) {
+        font-size: clamp(150%, 5dvw, 300%);
+    }
     header {
         /* font-size: 1em; */
         
