@@ -1,0 +1,78 @@
+body {
+    font-family: "noto sans", system-ui;
+    
+    @media (width > 320px) {
+        font-size: 120%;
+    }
+    @media (width > 450px) {
+        font-size: 150%;
+    }
+    header {
+        /* font-size: 1em; */
+        
+        h1 {
+            font-variant: small-caps;
+            font-family: "Tourney";
+            line-height: .8;
+            text-wrap-mode: nowrap;
+            font-weight: 400;
+            letter-spacing: 5%;
+            animation: shrink-h1 forwards linear;
+            animation-timeline: --header-shrink-timeline;
+            /* animation-range: entry 5dvmin 100%; */
+            /* background-position: bottom left; */
+
+        }
+
+        nav {
+            /* font-size: max(1.2em, 1.6vw); */
+            font-weight: 300;
+
+            a {
+                @media (width > 500px) {
+                    animation: shrink-nav forwards linear;
+                    animation-timeline: --header-shrink-timeline;
+                }
+            }
+        }
+    }
+
+    main {
+        h2, h3, h4, h5, h6 {
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            /* font-size: max(1em, 3vw); */
+        }
+
+        p {
+            font-family: "noto serif";
+            /* font-size: 1.2em; */
+            max-width: 70ch;
+            line-height: 1.7;
+        }
+    }
+}
+
+@keyframes shrink-h1 {
+    0% {
+        font-size: clamp(1.5em, 8vw, 6em);
+    }
+
+    100% {
+        font-size: clamp(1em, 5vw, 1.5em);
+    }
+}
+
+@keyframes shrink-nav {
+    0% {
+        font-size: clamp(1em, 2vw, 2.5em);
+    }
+    
+    100% {
+        font-size: 0.7em;
+        padding-block: 0.1em;
+    }
+}

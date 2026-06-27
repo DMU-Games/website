@@ -1,15 +1,17 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Monofett&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Monofett&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Tourney:ital,wght@0,100..900;1,100..900&display=swap');
+@import "./colours.css" layer(colours);
+
 @import "./framework.css" layer(framework);
 
 /* This is for stuff which is more likely to change */
 @import "./theme.css" layer(theme);
-@import "./colours.css" layer(colours);
+@import "./typography.css" layer(typography);
 
 /* utilities apply on top of everything else */
 @import "./utilities.css" layer(utilities);
 
-@layer framework, colours, theme, utilities;
+@layer framework, colours, typography, theme, utilities;
 
 
 

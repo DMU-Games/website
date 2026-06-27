@@ -1,6 +1,6 @@
 
 
-@layer fancy-bits {
+@layer animated-header {
 
     body {  
 
@@ -9,11 +9,6 @@
         timeline-scope: --header-shrink-timeline;
 
         header {
-            box-sizing: border-box;
-            min-height: 50svh;
-            animation: shrink forwards linear;
-            animation-timeline: --header-shrink-timeline; 
-            animation-range: entry 40% 100%;
             top: 0;
             z-index: 1;
             position: sticky;
@@ -21,71 +16,29 @@
 
         main {
             section:nth-child(1) {
-                view-timeline: --header-shrink-timeline; /* create a timeline in our variable */
+                view-timeline: --header-shrink-timeline; /* create a timeline in our variable? */
+            }
+        }
+        
+        @media (width < 10000px) {
+            /* add the header shrink animation */
+            header {
+                box-sizing: border-box;
+                min-height: 80dvmin;
+                animation: shrink forwards linear;
+                animation-timeline: --header-shrink-timeline;
+                /* animation-range: exit 5dvmin 100%; */
+            }
+            main {
+                section:nth-child(1) {
+                    padding-top: 20dvmin;
+                }
             }
         }
     }
     @keyframes shrink {
         100% {
             min-height: 0;
-        }
-    }
-    @keyframes shrinkFont {
-        100% {
-            font-size: 3em;
-        }
-    }
-}
-
-
-@layer typography {
-    body {
-        font-family: "noto sans", system-ui;
-
-        header {
-            h1 {
-                font-variant: small-caps;
-                font-family: "Tourney";
-                line-height: .8;
-                text-wrap-mode: nowrap;
-                font-size: max(2em, 8vw);
-                font-weight: 400;
-                letter-spacing: 5%;
-                animation: shrinkFont forwards linear;
-                animation-timeline: --header-shrink-timeline;
-                animation-range: entry 40% 100%;
-                background-position: bottom left;
-
-                @media (width > 350px) {
-                    /* add logo when there's room to do so */
-                    background-size: 1.5em;
-                    padding-left: 1.6em;
-                    background: url(../img/Logo1white.svg) no-repeat;
-                }
-            }
-
-            nav {
-                font-size: max(1.2em, 1.6vw);
-                font-weight: 400;
-            }
-        }
-
-        main {
-            h2, h3, h4, h5, h6 {
-                font-weight: 300;
-                letter-spacing: 2px;
-            }
-
-            h2 {
-                font-size: max(1.8em, 3vw);
-            }
-
-            p {
-                font-family: "noto serif";
-                font-size: 1.2em;
-                max-width: 70ch;
-                line-height: 1.7;
-            }
         }
     }
 }
